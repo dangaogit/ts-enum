@@ -35,7 +35,7 @@ export class Enum<T extends Record<string, EnumOption<V>>, K extends keyof T = k
   }
   private _vl = {} as Record<V, string>;
 
-  constructor(_enum: T) {
+  constructor(private _enum: T) {
     Object.entries(_enum).forEach(([k, v]) => {
       const key = k as keyof T;
       (this._kv as any)[key] = v.value;
@@ -59,5 +59,11 @@ export class Enum<T extends Record<string, EnumOption<V>>, K extends keyof T = k
 
   public getLabelByValue(value: V) {
     return this.vl[value];
+  }
+
+  public iteration<T>(call: (value: { key: K; option: EnumOption<V> }, index: number) => T): T[] {
+    return Object.entries(this._enum).map(([key, option], index) => {
+      return call({ key: key as K, option }, index);
+    });
   }
 }
