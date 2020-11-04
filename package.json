@@ -1,0 +1,18 @@
+{
+  "name": "@dangao/ts-enum",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/dangaogit/ts-enum.git",
+  "author": "dangaogit",
+  "license": "MIT",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "tsc -p ./ -d"
+  },
+  "devDependencies": {
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
+  }
+}
